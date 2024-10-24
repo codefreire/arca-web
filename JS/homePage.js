@@ -101,3 +101,116 @@ async function fetchDataFromGoogleSheets() {
 }
 
 loadChartBtn.addEventListener('click', fetchDataFromGoogleSheets);
+
+
+// Verificar si hay un usuario logueado en LocalStorage
+const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+
+if (!loggedInUser) {
+    window.location.href = "./index.html"; // Redirigir al login si no hay sesión activa
+}
+
+// Mostrar datos del usuario en la interfaz
+const welcomeMessage = document.getElementById('welcomeMessage');
+const dropdownMenu = document.getElementById('dropdownMenu');
+const logoutBtn = document.getElementById('logoutBtn');
+
+welcomeMessage.textContent = `Buenos días, ${loggedInUser.name}`;
+
+// Generar las iniciales del nombre para el avatar
+function getInitials(name) {
+    return name.split(' ').map(word => word[0]).join('').toUpperCase();
+}
+
+
+// Cerrar sesión y eliminar datos del LocalStorage
+logoutBtn.addEventListener('click', () => {
+    localStorage.removeItem('loggedInUser');
+    window.location.href = "./index.html";
+});
+
+
+
+
+const loadChartBtn1 = document.getElementById('loadChart1');
+const ctx1 = document.getElementById('myChart1').getContext('2d');
+let myChart1;
+const googleSheetURL1 = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRfNsN73m-pn3hXs9Bkz4NVZaNufo0saEjFfsWSRkTFoojD7hN-XowN9goQd3sXJoKteik2MDqjmZ1G/pub?output=csv';
+
+function renderChart1(labels, datasets) {
+    if (myChart1) {
+        myChart1.destroy();
+    }
+
+    myChart1 = new Chart(ctx1, {
+        type: 'bar', // Cambiar de 'line' a 'bar'
+        data: {
+            labels: labels,
+            datasets: datasets
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top'
+                },
+                zoom: {
+                    zoom: {
+                        wheel: {
+                            enabled: true
+                        },
+                        pinch: {
+                            enabled: true
+                        },
+                        mode: 'xy'
+                    },
+                    pan: {
+                        enabled: true,
+                        mode: 'xy'
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    display: true,
+                    title: {
+                        display: true,
+                        text: 'Categorías'
+                    }
+                },
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Valores'
+                    }
+                }
+            }
+        }
+    });
+}
+
+async function fetchDataFromGoogleSheets1() {
+    try {
+        const response = await fetch(googleSheetURL1);
+        const csvText = await response.text();
+        const results = Papa.parse(csvText, { header: false });
+        const labels = results.data.slice(1).map(row => row[0]);
+
+        const datasets = [
+            {
+                label: results.data[0][1],
+                data: results.data.slice(1).map(row => Number(row[0])),
+                backgroundColor: 'rgba(0, 123, 255, 0.5)', // Color de las barras
+                borderColor: 'rgba(0, 123, 255, 1)', // Color del borde de las barras
+                borderWidth: 2
+            }
+        ];
+
+        renderChart1(labels, datasets);
+    } catch (error) {
+        console.error('Error fetching or parsing the data:', error);
+    }
+}
+
+loadChartBtn1.addEventListener('click', fetchDataFromGoogleSheets1);

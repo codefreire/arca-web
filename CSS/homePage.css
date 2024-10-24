@@ -130,3 +130,29 @@ canvas {
   margin-top: 20px;
   display: block;
 }
+
+.avatar-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #007bff;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.logout-icon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 20px; /* Tamaño del icono de cerrar sesión */
+}

@@ -1,21 +1,48 @@
-// JS/login.js
+// Usuarios quemados con nombre, usuario y contraseña
+const USERS = [
+    {
+        username: 'admin',
+        password: '123456',
+        name: 'Administrador'
+    },
+    {
+        username: 'ihidalgo',
+        password: '123456',
+        name: 'Ivonne Dayanna Hidalgo Betancourt'
+    },
+    {
+        username: 'fvalencia',
+        password: '123456',
+        name: 'Francisco Valencia'
+    }
+];
 
-// Handle form submission
 document.getElementById("loginForm").addEventListener("submit", function (event) {
-    event.preventDefault(); // Prevent default form submission
+    event.preventDefault();
 
-    // Simulate a login process (e.g., validate user)
-    const fullname = event.target.fullname.value;
-    const password = event.target.password.value;
+    const enteredUsername = event.target.fullname.value;
+    const enteredPassword = event.target.password.value;
 
-    // Simple validation (in a real app, authenticate against a database)
-    if (fullname && password) {
-        // Redirect to the dashboard page
-        window.location.href = "./homePage.html"; // Ensure this path is correct
+    // Buscar un usuario que coincida con los datos ingresados
+    const foundUser = USERS.find(
+        user => user.username === enteredUsername && user.password === enteredPassword
+    );
+
+    if (foundUser) {
+        const userData = {
+            username: foundUser.username,
+            name: foundUser.name,
+            loginTime: new Date().toISOString()
+        };
+
+        // Guardar los datos del usuario en LocalStorage
+        localStorage.setItem('loggedInUser', JSON.stringify(userData));
+
+        // Redirigir al usuario a la página principal
+        window.location.href = "./homePage.html";
     } else {
-        alert("Please enter valid credentials.");
+        alert("Credenciales incorrectas. Inténtalo de nuevo.");
     }
 });
 
-
-
+console.log(`Ancho: ${window.innerWidth}px, Alto: ${window.innerHeight}px`);
