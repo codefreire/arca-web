@@ -1,21 +1,36 @@
-// JS/login.js
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js';
+import { getAuth, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/10.13.2/firebase-auth.js';
 
-// Handle form submission
+const firebaseConfig = {
+  apiKey: "AIzaSyBKkEEQd6F0DSJiRPZDtv8EfdgUcAEt4AM",
+  authDomain: "arca-lobos.firebaseapp.com",
+  projectId: "arca-lobos",
+  storageBucket: "arca-lobos.appspot.com",
+  messagingSenderId: "425836731918",
+  appId: "1:425836731918:web:7acb23357909e02be5e65f"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
 document.getElementById("loginForm").addEventListener("submit", function (event) {
-    event.preventDefault(); // Prevent default form submission
+    event.preventDefault();
 
-    // Simulate a login process (e.g., validate user)
-    const fullname = event.target.fullname.value;
-    const password = event.target.password.value;
+    const emailField = event.target.email;
+    const passwordField = event.target.password;
+    const email = emailField.value;
+    const password = passwordField.value;
 
-    // Simple validation (in a real app, authenticate against a database)
-    if (fullname && password) {
-        // Redirect to the dashboard page
-        window.location.href = "./homePage.html"; // Ensure this path is correct
-    } else {
-        alert("Please enter valid credentials.");
-    }
+    signInWithEmailAndPassword(auth, email, password)
+    .then(cred => {
+        if (cred.user.emailVerified) {
+            window.location.href = "./HTML/homePage.html";
+        } else {            
+            auth.signOut();
+        }
+    }).catch(error => {
+        alert("Correo o contraseña incorrectas");
+        emailField.value = "";
+        passwordField.value = "";
+    });
 });
-
-
-
