@@ -1,0 +1,19 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #E1251B;
+    font-family: 'Arial', sans-serif;
+    display: flex; justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+h1 {
+    color: white;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
