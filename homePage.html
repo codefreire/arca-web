@@ -1,36 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <link rel="stylesheet" href="./CSS/homePage.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <link rel="preload" href="https://docs.google.com/static/spreadsheets2/client/css/89656169-waffle_k_ltr.css" as="style">
+    <link rel="stylesheet" href="https://docs.google.com/static/spreadsheets2/client/css/89656169-waffle_k_ltr.css">
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@2.0.0"></script>
 </head>
+
 <body>
     <div class="container">
         <!-- Sidebar -->
         <aside class="sidebar">
             <img src="./IMAGENES/Arca Logo-02.png" alt="Logo" class="logo">
             <nav>
-                <a href="#" class="active"><i class="icon">🏠</i></a>
-                <a href="#"><i class="icon">📦</i></a>
-                <a href="#"><i class="icon">📊</i></a>
-                <a href="#"><i class="icon">📝</i></a>
-                <a href="#"><i class="icon">📈</i></a>
-                <a href="#"><i class="icon">⚙️</i></a>
-                <a href="#"><i class="icon">💬</i></a>
+                <button href="#" class="active"><i class="icon">🏠</i></button>
+                <br>
+                <button href="#"><i class="icon">📦</i></button>
+                <br>
+                <button href="#"><i class="icon">📊</i></button>
+                <br>
+                <button href="#"><i class="icon">📝</i></button>
+                <br>
+                <button href="#"><i class="icon">📈</i></button>
+                <br>
+                <button href="#"><i class="icon">⚙️</i></button>
+                <br>
+                <button href="#"><i class="icon">💬</i></button>
+                <br>
             </nav>
         </aside>
 
         <!-- Main Content -->
         <main class="content">
             <header class="top-bar">
-                <h1>Buenos días, Alicia</h1>
-                <p>Overview</p>
+                <h1>Buenos días, Francisco</h1>
                 <button class="support-btn">Soporte</button>
                 <div class="user-info">
-                    <span>Alicia González</span>
-                    <img src="./IMAGENES/user-avatar.jpg" alt="User" class="avatar">
+                    <span>Franscisco Valencia</span>
+                    <img src="" alt="User" class="avatar">
                 </div>
             </header>
 
@@ -46,7 +59,8 @@
             <section class="graphs">
                 <div class="graph stock">
                     <h3>Stock</h3>
-                    <img src="./IMAGENES/stock-chart.png" alt="Stock Graph">
+                    <button id="loadChart">Actualizar grafico</button>
+                    <canvas id="myChart" width="400" height="200"></canvas>
                 </div>
                 <div class="graph sales">
                     <h3>Ventas</h3>
@@ -61,7 +75,12 @@
                     <img src="./IMAGENES/branches-chart.png" alt="Branches Stock Graph">
                 </div>
             </section>
+
+          
         </main>
     </div>
+
+    <script src="./JS/homePage.js"></script>
 </body>
+
 </html>

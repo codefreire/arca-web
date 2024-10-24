@@ -11,7 +11,7 @@ document.getElementById("loginForm").addEventListener("submit", function (event)
     // Simple validation (in a real app, authenticate against a database)
     if (fullname && password) {
         // Redirect to the dashboard page
-        window.location.href = "./dashboard.html"; // Ensure this path is correct
+        window.location.href = "./homePage.html"; // Ensure this path is correct
     } else {
         alert("Please enter valid credentials.");
     }
