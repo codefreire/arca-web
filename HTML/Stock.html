@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Stock</title>
     <link rel="stylesheet" href="../CSS/homePage.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
@@ -32,24 +32,18 @@
         <main class="content">
             <header class="top-bar">
                 <h1 id="welcomeMessage">Hola</h1>
+               <!-- <button class="support-btn">Soporte</button>-->
                 <div class="user-info">
                     <span id="userName"></span>
+                    <div class="avatar-container">
                         <div class="dropdown-menu" id="dropdownMenu">
                             
                         </div>
+                    </div>
                 </div>
             </header>
 
-            <!-- Alerts Section -->
-             <h3>Alertas</h3>
-            <section class="alerts">
-                <div class="alert-card">Sin Alertas SKU <br><br></div>
-                <div class="alert-card">Sin Alerta Stock<br><br></div>
-                <div class="alert-card">Sin Alerta Ventas<br><br></div>
-                <div class="alert-card">Sin Alerta Productos ABC<br><br></div>
-            </section>
-
-            <!-- Graphs Section -->
+                    <!-- Graphs Section -->
             <section class="graphs">
                 <div class="graph stock">
                     <h3>Stock Teorico</h3>
@@ -57,7 +51,7 @@
                     <canvas id="myChart" width="400" height="200"></canvas>
                 </div>
                 <div class="graph sales">
-                    <h3>Ventas</h3>
+                    <h3>ABC Stock</h3>
                     <button id="loadChart1">Actualizar gráfico</button>
                     <canvas id="myChart1" width="400" height="200"></canvas>
                 </div>
@@ -67,18 +61,15 @@
                     <canvas id="myChart2" width="400" height="200"></canvas>
                 </div>
                 <div class="graph branches">
-                    <h3>Informe</h3>
-                    <a href="https://drive.google.com/file/d/11jTtzAKKXLYbzpBPPulS2pI_njfNVxUo/view?usp=drive_link" id="loadChart3">Descargar</a>
-                    <div class="informe">
-                        <img src="/IMAGENES/Informe Octubre 2024_page-0001.jpg" alt="Producto 1" >
-                    </div>
-                    
+                    <h3>Pronostico de Stock</h3>
+                    <button id="loadChart3">Actualizar gráfico</button>
+                    <canvas id="myChart3" width="400" height="200"></canvas>
                 </div>
             </section>
         </main>
     </div>
 
-    <script src="../JS/homePage.js"></script>
+    <script src="../JS/Stock.js"></script>
 </body>
 
 </html>

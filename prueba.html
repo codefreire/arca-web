@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gráfico de Google Sheets</title>
+    <!-- Incluye la librería Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Incluye la librería PapaParse para procesar CSV -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <link rel="preload" href="https://docs.google.com/static/spreadsheets2/client/css/89656169-waffle_k_ltr.css" as="style">
+    <link rel="stylesheet" href="https://docs.google.com/static/spreadsheets2/client/css/89656169-waffle_k_ltr.css">
+    <style>
+        /* Estilo opcional para el lienzo del gráfico */
+        canvas {
+            max-width: 600px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Gráfico de Datos de Google Sheets</h1>
+    <canvas id="myChart"></canvas> <!-- Elemento donde se renderiza el gráfico -->
+
+    <script>
+        // Variable para el gráfico
+        let myChart;
+        const ctx = document.getElementById('myChart').getContext('2d');
+        const googleSheetURL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTM2TzQ1W47gg3mzmtrdDHcqOUcViyvDep4lEPl7TSC5rqck6m09DG1DAa3w1BrRg/pub?output=csv'; // Reemplaza con tu URL de Google Sheets
+        const corsProxy = 'https://cors-anywhere.herokuapp.com/';
+        const fetchURL = corsProxy + googleSheetURL;
+        function renderChart(labels, data) {
+            if (myChart) {
+                myChart.destroy(); // Destruir el gráfico anterior si existe
+            }
+
+            myChart = new Chart(ctx, {
+                type: 'bar', // Cambiado a 'bar' para gráfico de barras
+                data: {
+                    labels: labels, // Etiquetas del eje X
+                    datasets: [{
+                        label: 'Dataset from Google Sheets',
+                        data: data, // Datos del eje Y
+                        backgroundColor: [
+                            'rgba(255, 0, 0, 0.6)', // Color rojo
+                            'rgba(0, 0, 255, 0.6)', // Color azul
+                            // Agrega más colores según la cantidad de barras
+                        ],
+                        borderColor: [
+                            'rgba(255, 0, 0, 1)', // Borde rojo
+                            'rgba(0, 0, 255, 1)', // Borde azul
+                            // Igualmente, agrega más bordes si tienes más barras
+                        ],
+                        borderWidth: 1,
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true // Comenzar el eje Y en cero
+                        }
+                    }
+                }
+            });
+        }
+
+        // Función para obtener y analizar datos CSV
+        async function fetchDataFromGoogleSheets() {
+            try {
+                const response = await fetch(googleSheetURL);
+                const csvText = await response.text();
+
+                // Usar PapaParse para convertir el texto CSV en un array
+                const results = Papa.parse(csvText, { header: false });
+
+                // Extraer la primera fila como etiquetas y la segunda fila como datos
+                const labels = results.data[0];  // Etiquetas del eje X
+                const data = results.data[1].map(Number);  // Datos del eje Y convertidos a números
+
+                // Renderizar el gráfico con los datos analizados
+                renderChart(labels, data);
+            } catch (error) {
+                console.error('Error fetching or parsing the data:', error);
+            }
+        }
+
+        // Llamar a la función para obtener datos al cargar la página
+        window.onload = fetchDataFromGoogleSheets;
+    </script>
+</body>
+</html>

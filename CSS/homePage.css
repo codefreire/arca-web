@@ -6,10 +6,19 @@
   font-family: 'Arial', sans-serif;
 }
 
+.icon {
+  font-size: 25px;
+  padding: 15px;
+  color: #e1251b;
+  display: block;
+  font-weight: 600;
+}
+
 body {
-  background-color: #D9D9D9;
-  display: flex;
-  height: 100vh;
+  background-color: #dad8db;
+  display: grid;
+  min-height: 100vh;
+  margin: 0;
 }
 
 /* Container Layout */
@@ -21,7 +30,7 @@ body {
 /* Sidebar */
 .sidebar {
   width: 80px;
-  background-color: #E01E1E;
+  background-color: #e1251b;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -39,12 +48,6 @@ body {
   color: white;
   text-decoration: none;
   font-size: 20px;
-}
-
-.sidebar nav a.active {
-  background-color: #9E1E1E;
-  border-radius: 10px;
-  padding: 10px;
 }
 
 /* Main Content */
@@ -68,7 +71,7 @@ body {
 }
 
 .support-btn {
-  background-color: #666;
+  background-color: #626166;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -82,11 +85,6 @@ body {
   gap: 10px;
 }
 
-.avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-}
 
 /* Alerts Section */
 .alerts {
@@ -131,28 +129,32 @@ canvas {
   display: block;
 }
 
-.avatar-container {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-.avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: #007bff;
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: bold;
-  margin-right: 10px;
-}
 
 .logout-icon {
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 20px; /* Tamaño del icono de cerrar sesión */
+  font-size: 50px;
+  /* Tamaño del icono de cerrar sesión */
+}
+
+.informe img {
+  width: 400px;
+  /* Ajusta el ancho según tus necesidades */
+  height: auto;
+  /* Mantiene la proporción de la imagen */
+  max-width: 100%;
+  /* Asegura que no exceda el ancho del contenedor */
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 60px;
+    /* Ajusta el ancho de la barra lateral en tabletas y móviles */
+  }
+
+  .graphs {
+    grid-template-columns: 1fr;
+    /* Cambia a una sola columna en pantallas pequeñas */
+  }
 }

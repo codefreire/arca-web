@@ -13,12 +13,6 @@ const logoutBtn = document.getElementById('logoutBtn');
 
 welcomeMessage.textContent = `Buenos días, ${loggedInUser.name}`;
 
-// Generar las iniciales del nombre para el avatar
-function getInitials(name) {
-    return name.split(' ').map(word => word[0]).join('').toUpperCase();
-}
-
-
 // Cerrar sesión y eliminar datos del LocalStorage
 logoutBtn.addEventListener('click', () => {
     localStorage.removeItem('loggedInUser');
@@ -101,7 +95,7 @@ async function fetchDataFromGoogleSheets() {
                 data: results.data.slice(1).map(row => Number(row[1])),
                 fill: true,
                 backgroundColor: 'rgba(0, 123, 255, 0.3)',
-                borderColor: 'rgba(0, 123, 255, 1)',
+                borderColor: 'rgba(218, 216, 219, 1)',
                 borderWidth: 2,
                 tension: 0.4
             },
@@ -110,7 +104,7 @@ async function fetchDataFromGoogleSheets() {
                 data: results.data.slice(1).map(row => Number(row[2])),
                 fill: true,
                 backgroundColor: 'rgba(255, 99, 71, 0.3)',
-                borderColor: 'rgba(255, 99, 71, 1)',
+                borderColor: 'rgba(225, 37, 27, 1)',
                 borderWidth: 2,
                 tension: 0.4
             },
@@ -119,7 +113,7 @@ async function fetchDataFromGoogleSheets() {
                 data: results.data.slice(1).map(row => Number(row[3])),
                 fill: true,
                 backgroundColor: 'rgba(34, 139, 34, 0.3)',
-                borderColor: 'rgba(34, 139, 34, 1)',
+                borderColor: 'rgba(34, 139, 34, 0.3)',
                 borderWidth: 2,
                 tension: 0.4
             }
@@ -140,7 +134,7 @@ loadChartBtn.addEventListener('click', fetchDataFromGoogleSheets);
 const loadChartBtn1 = document.getElementById('loadChart1');
 const ctx1 = document.getElementById('myChart1').getContext('2d');
 let myChart1;
-const googleSheetURL1 = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRfNsN73m-pn3hXs9Bkz4NVZaNufo0saEjFfsWSRkTFoojD7hN-XowN9goQd3sXJoKteik2MDqjmZ1G/pub?output=csv';
+const googleSheetURL1 = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQnoGZmieHRZnUC8l-NnAPrWXOd6NY1bNvYx5_BN30O9JkErCSmfD7InWgu9VHLKRiByuvp814ggetY/pub?output=csv';
 
 function renderChart1(labels, datasets) {
     if (myChart1) {
@@ -204,10 +198,10 @@ async function fetchDataFromGoogleSheets1() {
 
         const datasets = [
             {
-                label: results.data[0][1],
+                label: results.data[0][2],
                 data: results.data.slice(1).map(row => Number(row[0])),
-                backgroundColor: 'rgba(0, 123, 255, 0.5)', // Color de las barras
-                borderColor: 'rgba(0, 123, 255, 1)', // Color del borde de las barras
+                backgroundColor: 'rgba(225, 37, 27, 1)', // Color de las barras
+                borderColor: 'rgba(225, 37, 27, 1)', // Color del borde de las barras
                 borderWidth: 2
             }
         ];
@@ -293,8 +287,8 @@ async function fetchDataFromGoogleSheets2() {
             {
                 label: results.data[0][1],
                 data: results.data.slice(1).map(row => Number(row[0])),
-                backgroundColor: 'rgba(0, 123, 255, 0.5)', // Color de las barras
-                borderColor: 'rgba(0, 123, 255, 1)', // Color del borde de las barras
+                backgroundColor: 'rgba(225, 37, 27, 1)', // Color de las barras
+                borderColor: 'rgba(225, 37, 27, 1)', // Color del borde de las barras
                 borderWidth: 2
             }
         ];
@@ -315,7 +309,7 @@ loadChartBtn2.addEventListener('click', fetchDataFromGoogleSheets2);
 const loadChartBtn3 = document.getElementById('loadChart3');
 const ctx3 = document.getElementById('myChart3').getContext('2d');
 let myChart3;
-const googleSheetURL3 = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTOrWv5tjT7oZMIVVadJSpXB9NIJO1GRgnhAreTvZyW5_n0b57OnXCzq8QM2uNYtWRpoRABjVlJOFvp/pub?output=csv';
+const googleSheetURL3 = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTpNM3hGDxNwQLaooehwsF763tifPRP9fdz4tVOt6KcRBCQClJ7emqf-x5qzAo_GiQ-UBXhAmAixgCu/pub?output=csv';
 
 function renderChart3(labels, datasets) {
     if (myChart3) {
@@ -323,7 +317,7 @@ function renderChart3(labels, datasets) {
     }
 
     myChart3 = new Chart(ctx3, {
-        type: 'bar', // Cambiar de 'line' a 'bar'
+        type: 'line', // Cambiar de 'line' a 'bar'
         data: {
             labels: labels,
             datasets: datasets
@@ -380,9 +374,9 @@ async function fetchDataFromGoogleSheets3() {
         const datasets = [
             {
                 label: results.data[0][1],
-                data: results.data.slice(1).map(row => Number(row[0])),
-                backgroundColor: 'rgba(0, 123, 255, 0.5)', // Color de las barras
-                borderColor: 'rgba(0, 123, 255, 1)', // Color del borde de las barras
+                data: results.data.slice(1).map(row => Number(row[1])),
+                backgroundColor: 'rgba(225, 37, 27, 1)', // Color de las barras
+                borderColor: 'rgba(225, 37, 27, 1)', // Color del borde de las barras
                 borderWidth: 2
             }
         ];
@@ -395,7 +389,3 @@ async function fetchDataFromGoogleSheets3() {
 
 loadChartBtn3.addEventListener('click', fetchDataFromGoogleSheets3);
 
-const dateElement = document.getElementById('currentDate');
-const currentDate = new Date();
-const options = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' };
-dateElement.textContent = currentDate.toLocaleDateString('es-ES', options); // Formato en español
