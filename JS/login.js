@@ -39,10 +39,9 @@ document.getElementById("loginForm").addEventListener("submit", function (event)
         localStorage.setItem('loggedInUser', JSON.stringify(userData));
 
         // Redirigir al usuario a la página principal
-        window.location.href = "./homePage.html";
+        window.location.href = "./HTML/homePage.html";
     } else {
         alert("Credenciales incorrectas. Inténtalo de nuevo.");
     }
 });
 
-console.log(`Ancho: ${window.innerWidth}px, Alto: ${window.innerHeight}px`);
