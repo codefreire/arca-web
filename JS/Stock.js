@@ -23,7 +23,6 @@ logoutBtn.addEventListener('click', () => {
 
 //grafico de stock
 
-const loadChartBtn = document.getElementById('loadChart');
 const ctx = document.getElementById('myChart').getContext('2d');
 let myChart;
 const googleSheetURL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSBL6-KsFhMXWVQpWdppTfBQS8l0aksQA9hKDqbd-1hvZIYuY0KuIWlSnth75SCaRGzTyanZZx9pPV5/pub?output=csv';
@@ -125,13 +124,12 @@ async function fetchDataFromGoogleSheets() {
     }
 }
 
-loadChartBtn.addEventListener('click', fetchDataFromGoogleSheets);
+fetchDataFromGoogleSheets();
 
 
 
 //grafico de ventas     
 
-const loadChartBtn1 = document.getElementById('loadChart1');
 const ctx1 = document.getElementById('myChart1').getContext('2d');
 let myChart1;
 const googleSheetURL1 = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQnoGZmieHRZnUC8l-NnAPrWXOd6NY1bNvYx5_BN30O9JkErCSmfD7InWgu9VHLKRiByuvp814ggetY/pub?output=csv';
@@ -212,13 +210,12 @@ async function fetchDataFromGoogleSheets1() {
     }
 }
 
-loadChartBtn1.addEventListener('click', fetchDataFromGoogleSheets1);
+fetchDataFromGoogleSheets1()
 
 
 
 //grafico de top 10
 
-const loadChartBtn2 = document.getElementById('loadChart2');
 const ctx2 = document.getElementById('myChart2').getContext('2d');
 let myChart2;
 const googleSheetURL2 = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSB8BWZg1cAghSf3nahbWYW5FfmfcsL2C2DW-Dv4Ae-yDPg3r-gEeHgptWBr6Q478U-Y2-50n5mdg21/pub?output=csv';
@@ -299,14 +296,12 @@ async function fetchDataFromGoogleSheets2() {
     }
 }
 
-loadChartBtn2.addEventListener('click', fetchDataFromGoogleSheets2);
-
+fetchDataFromGoogleSheets2()
 
 
 
 //grafico de stocktop 10
 
-const loadChartBtn3 = document.getElementById('loadChart3');
 const ctx3 = document.getElementById('myChart3').getContext('2d');
 let myChart3;
 const googleSheetURL3 = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTpNM3hGDxNwQLaooehwsF763tifPRP9fdz4tVOt6KcRBCQClJ7emqf-x5qzAo_GiQ-UBXhAmAixgCu/pub?output=csv';
@@ -387,5 +382,5 @@ async function fetchDataFromGoogleSheets3() {
     }
 }
 
-loadChartBtn3.addEventListener('click', fetchDataFromGoogleSheets3);
 
+fetchDataFromGoogleSheets3()
