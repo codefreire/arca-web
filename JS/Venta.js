@@ -25,7 +25,7 @@ logoutBtn.addEventListener('click', () => {
 
 const ctx = document.getElementById('myChart').getContext('2d');
 let myChart;
-const googleSheetURL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTgM1ETJMkZFrlfJcl2JIF2jCOAzCj_GrRZ_Dx8ajQ8_Bjlcnx7gjSLcz5Uu4vHi6TDvvewxJCLW0bA/pub?output=csv';
+const googleSheetURL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTOrWv5tjT7oZMIVVadJSpXB9NIJO1GRgnhAreTvZyW5_n0b57OnXCzq8QM2uNYtWRpoRABjVlJOFvp/pub?output=csv';
 
 function renderChart(labels, datasets) {
     if (myChart) {
@@ -33,7 +33,7 @@ function renderChart(labels, datasets) {
     }
 
     myChart = new Chart(ctx, {
-        type: 'bar',
+        type: 'line',
         data: {
             labels: labels,
             datasets: datasets
@@ -224,7 +224,7 @@ function renderChart2(labels, datasets) {
     }
 
     myChart2 = new Chart(ctx2, {
-        type: 'bar', // Cambiar de 'line' a 'bar'
+        type: 'line', // Cambiar de 'line' a 'bar'
         data: {
             labels: labels,
             datasets: datasets
