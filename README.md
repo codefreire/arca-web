@@ -45,6 +45,27 @@ Tipografía
 •	H7 Myriad Pro-Bold 15
 •	H8 Myriad Pro-Semibold 15
 •	H9 Myriad Pro-Regular 16
-Figma
-https://www.figma.com/design/wRjewFCYoEsOwzci8FUoU2/Dashboard?node-id=1-9007&t=hsNxQ7lwTd5kkIjy-1
 
+ANÁLISIS DE DATOS
+  Área y sucursales
+  Stock por sucursal y productos
+  Ventas por sucursal y producto
+
+  Objetivos:
+  Generar la tendencia lineal mensual a nivel comercial y bodega
+  Promedios y proyecciones de ventas mensuales basados en la tendencia lineal, a nivel comercial y de bodega.
+  Generar el TOP 10 y el análisis ABC a nivel comercial y de bodega
+  Generar un inventario teórico 
+
+  Identificar y Prever Tendencias
+  Clasificar y Priorizar Productos
+  Mantener un Balance Óptimo de Inventario
+  Prever y Optimizar Ventas
+
+PLATAFORMA
+  https://arca-lobos.web.app/
+  Usuario: admin
+  Contraseña: 123456
+
+PROTORIPO SEGUNDA VERSIÓN FIGMA
+https://www.figma.com/design/wRjewFCYoEsOwzci8FUoU2/Dashboard?node-id=1-9007&t=hsNxQ7lwTd5kkIjy-1
