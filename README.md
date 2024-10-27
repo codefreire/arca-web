@@ -27,3 +27,24 @@ Objetivo:
 •	Generar un inventario teórico en base al último inventario tomado y las últimas ventas.
 
 
+DETALLES DISEÑO
+Colores
+•	#E1251B
+•	#000000
+•	#DAD8D8
+•	#626166
+•	#C4223A
+•	#6F3A29
+Tipografía
+•	H1 Myriad Pro-Black 48
+•	H2 Myriad Pro-Bold 48
+•	H3 Myriad Pro-Bold 30
+•	H4 Myriad Pro-Bold 24
+•	H5 Myriad Pro-Bold 20
+•	H6 Myriad Pro-Bold 16
+•	H7 Myriad Pro-Bold 15
+•	H8 Myriad Pro-Semibold 15
+•	H9 Myriad Pro-Regular 16
+Figma
+https://www.figma.com/design/wRjewFCYoEsOwzci8FUoU2/Dashboard?node-id=1-9007&t=hsNxQ7lwTd5kkIjy-1
+
